@@ -1,0 +1,69 @@
+@import "../../styles/base.scss";
+
+body {
+  margin: 0;
+  text-align: center;
+  font-family: "Red Hat Text", sans-serif;
+  min-height: 100vh;
+  background: url("../../assets/img/bg-stars.svg"),
+    url("../../assets/img/pattern-hills.svg"),
+    linear-gradient(hsl(235, 16%, 14%), hsl(235, 16%, 14%));
+  background-repeat: repeat, no-repeat;
+  background-size: auto, 100% auto;
+  background-position: center center, bottom;
+  background-color: $very-dark-blue;
+}
+
+.wrapper {
+  @include flex-col;
+  gap: 60px;
+  padding: 6rem 0;
+  @include apply-at-sm-size {
+    padding: 8rem 0;
+  }
+}
+
+.text-header {
+  color: $color-neutral;
+  letter-spacing: 5.5px;
+  @include apply-at-xs-size {
+    font-size: 16px;
+    letter-spacing: 10px;
+  }
+}
+
+.container {
+  @include flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 32px;
+  @include apply-at-sm-size {
+    gap: 10px;
+  }
+}
+
+.text-counter {
+  align-items: center;
+  font-size: 12px;
+  color: $color-primary-blue;
+}
+
+.number {
+  background-color: $dark-desaturated-blue;
+  color: $color-primary-red;
+  padding: 30px;
+  border-radius: 7px;
+  font-size: 56px;
+  @include apply-at-sm-size {
+    padding: 10px;
+    font-size: 32px;
+  }
+}
+
+.socmed {
+  @include flex;
+  width: 100%;
+  gap: 20px;
+  justify-content: center;
+  color: $color-primary-blue;
+}
