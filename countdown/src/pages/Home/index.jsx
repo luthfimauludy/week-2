@@ -11,7 +11,7 @@ import {
 // Styling
 import classes from "./style.module.scss";
 
-const countDownTimer = 1 * 24 * 60 * 60 * 1000;
+const countDownTimer = 2 * 24 * 60 * 60 * 1000;
 const dateNow = new Date().getTime();
 const result = dateNow + countDownTimer;
 
