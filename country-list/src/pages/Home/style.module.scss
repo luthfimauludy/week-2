@@ -1,0 +1,98 @@
+@import "../../styles/base.scss";
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $nuno-sans;
+}
+
+body {
+  background-color: $bg-light;
+}
+
+select {
+  outline: none;
+  border: none;
+}
+
+.container {
+  @include flex;
+  padding: 0 2rem;
+  justify-content: space-between;
+  @include apply-at-sm-size {
+    @include flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 30px;
+  }
+}
+
+.wrapper {
+  @include flex;
+  flex-direction: column;
+  gap: 30px;
+  @include apply-at-sm-size {
+    gap: 30px;
+  }
+}
+
+.navbar {
+  @include flex;
+  width: 100%;
+  min-height: 99px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  color: $text-light;
+  background-color: $neutral;
+  box-shadow: 0 1px 10px $shadow;
+  @include apply-at-sm-size {
+    padding: 0 15px;
+  }
+}
+
+.navbar-text {
+  @include text-18;
+}
+
+.navbar-theme-contain {
+  @include flex;
+  gap: 5px;
+}
+
+.navbar-theme-text {
+  @include text-15;
+}
+
+.search-contain {
+  @include flex;
+  min-width: 480px;
+  min-height: 56px;
+  align-items: center;
+  padding-left: 20px;
+  gap: 20px;
+  background-color: $neutral;
+  box-shadow: 0 1px 10px $shadow;
+  @include apply-at-sm-size {
+    max-width: 425px;
+    padding: 20px 30px;
+    margin: 0 20px;
+  }
+  .search-input {
+    border: transparent;
+    outline: none;
+  }
+}
+
+.region-contain {
+  @include flex;
+  align-items: center;
+  padding: 0 20px;
+  background-color: $neutral;
+  box-shadow: 0 1px 10px $shadow;
+  @include apply-at-sm-size {
+    max-width: 248px;
+    padding: 20px;
+    margin: 0 20px;
+  }
+}

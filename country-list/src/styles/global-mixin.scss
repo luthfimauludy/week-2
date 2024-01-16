@@ -1,0 +1,22 @@
+@mixin flex {
+  display: flex;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin text-18 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+@mixin text-15 {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 17px;
+}

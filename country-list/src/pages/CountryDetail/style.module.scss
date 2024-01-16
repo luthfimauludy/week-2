@@ -1,0 +1,123 @@
+@import "../../styles/base.scss";
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $nuno-sans;
+}
+
+body {
+  background-color: $bg-light;
+}
+
+select {
+  outline: none;
+  border: none;
+}
+
+img {
+  width: 555px;
+  height: 400px;
+  @include apply-at-sm-size {
+    width: 401px;
+    height: 268px;
+  }
+}
+
+.img-contain {
+  padding: 0 30px;
+}
+
+.wrapper {
+  @include flex;
+  flex-direction: column;
+  gap: 30px;
+  @include apply-at-sm-size {
+    gap: 30px;
+  }
+}
+
+.navbar {
+  @include flex;
+  width: 100%;
+  min-height: 99px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  color: $text-light;
+  background-color: $neutral;
+  box-shadow: 0 1px 10px $shadow;
+  @include apply-at-sm-size {
+    padding: 0 15px;
+  }
+}
+
+.navbar-text {
+  @include text-18;
+}
+
+.navbar-theme-contain {
+  @include flex;
+  gap: 5px;
+}
+
+.navbar-theme-text {
+  @include text-15;
+}
+
+.btn-contain {
+  @include flex;
+  max-width: 136px;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 30px;
+  gap: 10px;
+  background-color: $neutral;
+  box-shadow: 0 1px 10px $shadow;
+  @include apply-at-sm-size {
+    min-height: 40px;
+    padding: 10px 0;
+    margin-left: 20px;
+  }
+}
+
+.desc-contain {
+  @include flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: start;
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.desc-text {
+  @include flex;
+  gap: 50px;
+  @include apply-at-sm-size {
+    @include flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+.paragraph-contain {
+  @include flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.border-countries-contain {
+  @include flex;
+  gap: 10px;
+  @include apply-at-sm-size {
+    @include flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.btn-border-countries {
+  @include flex;
+  gap: 10px;
+}
