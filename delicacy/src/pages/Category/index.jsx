@@ -1,19 +1,59 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import CardMenu from "../../components/CardMenu";
 import CardCategory from "../../components/CardCategory";
+import callJSON from "../../domain/json";
 
 import classes from "./style.module.scss";
 import callAPI from "../../domain/api";
 
 const Category = () => {
-  const [meal, setMeal] = React.useState([]);
-  const [moreRecipies, setMoreRecipies] = React.useState([]);
+  const [meal, setMeal] = useState([]);
+  const [moreRecipies, setMoreRecipies] = useState([]);
+  const [favorite, setFavorite] = useState([]);
   const navigate = useNavigate();
 
   const goDetail = (id) => {
     navigate(`/${id}`);
+  };
+
+  const fetchFavorite = async () => {
+    try {
+      const response = await callJSON("/favorite", "GET");
+      setFavorite(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addFavorite = async (data) => {
+    const { idMeal, strMeal, strMealThumb } = data;
+    try {
+      await callJSON(
+        "/favorite",
+        "POST",
+        {},
+        {},
+        {
+          id: idMeal,
+          name: strMeal,
+          image: strMealThumb,
+        }
+      );
+      fetchFavorite();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeFavorite = async (id) => {
+    try {
+      await callJSON(`/favorite/${id}`, "DELETE", {}, {}, {});
+      fetchFavorite();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const fetchData = async () => {
@@ -71,15 +111,16 @@ const Category = () => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     try {
       fetchData();
+      fetchFavorite();
     } catch (error) {
       console.log(error);
     }
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     try {
       fetchMoreRecipies();
     } catch (error) {
@@ -106,19 +147,11 @@ const Category = () => {
           return (
             <CardCategory
               key={index}
-              id={data.idMeal}
-              name={data.strMeal}
-              instructions={data.strInstructions}
-              image={data.strMealThumb}
-              ingredient1={data.strIngredient1}
-              ingredient2={data.strIngredient2}
-              ingredient3={data.strIngredient3}
-              ingredient4={data.strIngredient4}
-              measure1={data.strMeasure1}
-              measure2={data.strMeasure2}
-              measure3={data.strMeasure3}
-              measure4={data.strMeasure4}
+              favorite={favorite}
+              addFavorite={addFavorite}
+              removeFavorite={removeFavorite}
               goDetail={goDetail}
+              data={data}
             />
           );
         })}

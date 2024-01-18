@@ -1,0 +1,22 @@
+@import "../../styles/base.scss";
+
+.container {
+  padding-left: 85px;
+  padding-bottom: 40px;
+}
+
+.list-category {
+  @include flex;
+  gap: 40px;
+  font-family: $roboto;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 20px;
+  padding: 20px 0;
+}
+
+.box-card {
+  @include flex;
+  gap: 50px;
+  margin-top: 80px;
+}

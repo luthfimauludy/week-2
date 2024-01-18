@@ -1,15 +1,18 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import CardMenu from "../../components/CardMenu";
 import CardCategory from "../../components/CardCategory";
 
 import classes from "./style.module.scss";
-import { useNavigate, useParams } from "react-router-dom";
+
 import callAPI from "../../domain/api";
+import callJSON from "../../domain/json";
 
 const Detail = () => {
-  const [detail, setDetail] = React.useState({});
-  const [moreRecipies, setMoreRecipies] = React.useState([]);
+  const [detail, setDetail] = useState({});
+  const [moreRecipies, setMoreRecipies] = useState([]);
+  const [favorite, setFavorite] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -17,7 +20,6 @@ const Detail = () => {
     try {
       if (id) {
         const responseData = await callAPI(`/lookup.php?i=${id}`, "GET");
-        console.log(responseData);
         setDetail({ ...responseData?.meals[0] });
       } else {
         navigate("/");
@@ -40,11 +42,50 @@ const Detail = () => {
     }
   };
 
-  React.useEffect(() => {
+  const fetchFavorite = async () => {
+    try {
+      const response = await callJSON("/favorite", "GET");
+      setFavorite(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
     fetchDetail();
+    fetchFavorite();
   }, [id]);
 
-  React.useEffect(() => {
+  const addFavorite = async (data) => {
+    const { idMeal, strMeal, strMealThumb } = data;
+    try {
+      await callJSON(
+        "/favorite",
+        "POST",
+        {},
+        {},
+        {
+          id: idMeal,
+          name: strMeal,
+          image: strMealThumb,
+        }
+      );
+      fetchFavorite();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeFavorite = async (id) => {
+    try {
+      await callJSON(`/favorite/${id}`, "DELETE", {}, {}, {});
+      fetchFavorite();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
     try {
       fetchMoreRecipies();
     } catch (error) {
@@ -58,17 +99,10 @@ const Detail = () => {
       <section className={classes["box-category"]}>
         <CardCategory
           key={detail.idMeal}
-          name={detail.strMeal}
-          instructions={detail.strInstructions}
-          image={detail.strMealThumb}
-          ingredient1={detail.strIngredient1}
-          ingredient2={detail.strIngredient2}
-          ingredient3={detail.strIngredient3}
-          ingredient4={detail.strIngredient4}
-          measure1={detail.strMeasure1}
-          measure2={detail.strMeasure2}
-          measure3={detail.strMeasure3}
-          measure4={detail.strMeasure4}
+          favorite={favorite}
+          addFavorite={addFavorite}
+          removeFavorite={removeFavorite}
+          data={detail}
         />
       </section>
 
