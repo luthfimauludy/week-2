@@ -1,0 +1,32 @@
+@import "../../styles/base.scss";
+
+.container {
+  padding-left: 85px;
+  padding-bottom: 40px;
+}
+
+.box-category {
+  @include flex;
+  gap: 300px;
+  max-height: 571px;
+  padding-top: 50px;
+  justify-content: center;
+}
+
+.box-card {
+  @include flex;
+  gap: 50px;
+}
+
+.card-menu {
+  @include flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.more-recipies {
+  font-family: $archivo-narrow;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 32px;
+}

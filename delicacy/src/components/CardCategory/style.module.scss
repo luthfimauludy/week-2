@@ -1,0 +1,96 @@
+@import "../../styles/base.scss";
+
+.desc-category {
+  position: relative;
+  @include flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 623px;
+  max-height: 531px;
+  border: 10px solid white;
+  border-radius: 10px;
+  box-shadow: 0 1px 10px $shadow;
+  padding-top: 10px;
+  padding-bottom: 60px;
+  padding-left: 10px;
+  margin-bottom: 30px;
+  color: $text-color-primary;
+  .text-header {
+    font-family: $archivo-narrow;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .text-area {
+    max-width: 400px;
+    font-family: $roboto;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+  }
+  .text-ingredients {
+    font-family: $archivo-narrow;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 26px;
+    color: $text-color-secondary;
+  }
+
+  .contain-ingredients {
+    @include flex;
+    justify-content: space-between;
+    max-width: 300px;
+    .box-ingradients {
+      @include flex;
+      min-width: 139px;
+      gap: 5px;
+      align-items: center;
+      .box-img-ingradients {
+        padding: 10px 15px;
+        box-shadow: 0 1px 10px $shadow;
+        border-radius: 10px;
+      }
+      .box-text-ingradients {
+        @include flex;
+        flex-direction: column;
+        gap: 5px;
+        font-family: $roboto;
+        font-weight: 500;
+        .text-head-ingradients {
+          font-size: 10px;
+          line-height: 12px;
+        }
+        .text-sub-ingradients {
+          font-size: 8px;
+          line-height: 9px;
+        }
+      }
+    }
+  }
+
+  .btn-contain {
+    @include flex;
+    max-width: 300px;
+    justify-content: space-between;
+    button {
+      width: 124px;
+      height: 29px;
+      border: 1px solid $border-btn-primary;
+      border-radius: 5px;
+      color: $text-color-btn;
+      cursor: pointer;
+      font-size: 7px;
+      line-height: 9px;
+    }
+  }
+
+  .img-category {
+    position: absolute;
+    right: -40%;
+    top: 10%;
+    img {
+      width: 400px;
+      height: 400px;
+    }
+  }
+}

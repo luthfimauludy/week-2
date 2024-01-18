@@ -1,0 +1,47 @@
+@import "../../styles/base.scss";
+
+.container {
+  padding-left: 85px;
+  padding-bottom: 40px;
+}
+
+.list-category {
+  @include flex;
+  gap: 40px;
+  font-family: $roboto;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 20px;
+  padding: 20px 0;
+}
+
+.box-category {
+  @include flex;
+  gap: 300px;
+  max-height: 571px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.box-category::-webkit-scrollbar {
+  display: none;
+}
+
+.box-card {
+  @include flex;
+  gap: 50px;
+}
+
+.card-menu {
+  @include flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.more-recipies {
+  font-family: $archivo-narrow;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 32px;
+}
