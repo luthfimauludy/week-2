@@ -1,0 +1,14 @@
+@import "../../styles/base.scss";
+
+.box-input {
+  @include flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-input {
+  @include flex;
+  flex-direction: column;
+  gap: 10px;
+}
